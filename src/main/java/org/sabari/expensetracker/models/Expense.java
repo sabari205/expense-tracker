@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 @Table(name="expenses")
 public class Expense {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(name="description")
