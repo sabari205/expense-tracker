@@ -62,4 +62,11 @@ public class ExpensesController {
 
         return new ResponseEntity(newValue, HttpStatus.OK);
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<Expense> updateExpense(@RequestBody ExpenseDTO expense) {
+        Expense updatedExpense = null;
+
+        
+    }
 }

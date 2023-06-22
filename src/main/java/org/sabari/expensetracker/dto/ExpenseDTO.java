@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
 public class ExpenseDTO {
+	private int id;
 	private String description;
 	private String spentOn;
 	private float amount;
@@ -15,6 +16,14 @@ public class ExpenseDTO {
 		this.spentOn = spentOn;
 		this.amount = amount;
 		this.username = username;
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getDescription() {
