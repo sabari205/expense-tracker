@@ -7,11 +7,15 @@ import java.text.ParseException;
 public class ExpenseDTO {
 	private int id;
 	private String description;
-	private String spentOn;
+	private Date spentOn;
 	private float amount;
 	private String username;
 
-	public ExpenseDTO(String description, String spentOn, float amount, String username) {
+	public ExpenseDTO() {
+
+	}
+
+	public ExpenseDTO(int id, String description, Date spentOn, float amount, String username) {
 		this.description = description;
 		this.spentOn = spentOn;
 		this.amount = amount;
@@ -34,15 +38,16 @@ public class ExpenseDTO {
 		this.description = description;
 	}
 	
-	public String getSpentOn() {
+	public Date getSpentOn() {
 		return this.spentOn;
 	}
 
 	public Date getSpentOnDate() throws ParseException {
-		return new Date(new SimpleDateFormat("yyyy-MM-dd").parse(this.spentOn).getTime());
+		// return new Date(new SimpleDateFormat("yyyy-MM-dd").parse(this.spentOn).getTime());
+		return this.spentOn;
 	}
 
-	public void setSpentOn(String spentOn) {
+	public void setSpentOn(Date spentOn) {
 		this.spentOn = spentOn;
 	}
 	

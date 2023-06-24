@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
-import java.text.ParseException;
 
 import org.sabari.expensetracker.service.ExpenseService;
 import org.sabari.expensetracker.models.Expense;
@@ -50,11 +50,7 @@ public class ExpensesController {
     public ResponseEntity<Expense> addExpense(@RequestBody ExpenseDTO expense) {
         Expense newValue = null;
 
-        try {
-            newValue = expenseService.addNewExpense(new Expense(expense.getDescription(), expense.getSpentOnDate(), expense.getAmount(), expense.getUsername()));
-        } catch (ParseException ex) {
-            return new ResponseEntity(HttpStatus.UNPROCESSABLE_ENTITY);
-        }
+        newValue = expenseService.addNewExpense(expense);
 
         if (newValue == null) {
             return new ResponseEntity(HttpStatus.UNPROCESSABLE_ENTITY);
@@ -67,6 +63,12 @@ public class ExpensesController {
     public ResponseEntity<Expense> updateExpense(@RequestBody ExpenseDTO expense) {
         Expense updatedExpense = null;
 
-        
+        updatedExpense = expenseService.updateExpense(expense);
+
+        if (updatedExpense == null) {
+            return new ResponseEntity(HttpStatus.UNPROCESSABLE_ENTITY);
+        }
+
+        return new ResponseEntity(updatedExpense, HttpStatus.OK);
     }
 }

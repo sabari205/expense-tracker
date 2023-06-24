@@ -10,5 +10,6 @@ import org.sabari.expensetracker.models.Expense;
 public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
 
 	List<Expense> findBySpentOn(Date date);
+	Expense findById(int id);
 
 }
